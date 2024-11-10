@@ -1,0 +1,52 @@
+﻿@model IEnumerable<Ex19.Models.TouristPlace>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "AddPlace")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TouristPlaceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Location)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MoreInfo)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.TouristPlaceName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Location)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MoreInfo)
+        </td>
+        <td>
+            <img src="@item.ImagePath" alt="@item.TouristPlaceName" width="300" height="150" />
+            @*<img src="@item.ImagePath" alt="img" />*@
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditPlace", new { id=item.TouristPlaceId }) |
+            @Html.ActionLink("Details", "Details", new { id=item.TouristPlaceId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.TouristPlaceId })
+        </td>
+    </tr>
+}
+
+</table>
